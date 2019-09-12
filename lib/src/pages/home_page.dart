@@ -1,11 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:jaguar/src/bloc/provider.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final bloc = Provider.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home Page'),
+        centerTitle: true,
+        title: Text('Jaguar', style: TextStyle(fontFamily: 'Moderna'),),
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text('Email: ${bloc.email}'),
+          Divider(),
+          Text('Password: ${bloc.password}'),
+        ],
       ),
     );
   }
