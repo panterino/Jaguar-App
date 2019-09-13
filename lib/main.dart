@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         'register': (BuildContext context) => RegisterPage(),
         'home': (BuildContext context) => HomePage(),
       },
-      theme: ThemeData(primaryColor: Colors.deepPurple),
+      theme: ThemeData(primaryColor: Colors.blue),
     ));
   }
 }

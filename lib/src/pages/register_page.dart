@@ -54,7 +54,7 @@ class RegisterPage extends StatelessWidget {
             ),
           ),
           FlatButton(
-            child: Text('Ya tengo cuenta'),
+            child: Text('Ya tengo cuenta', style: TextStyle(color: Colors.white),),
             onPressed: () => Navigator.pushReplacementNamed(context, 'login'),
           ),
           SizedBox(height: 100.0),
@@ -74,7 +74,7 @@ class RegisterPage extends StatelessWidget {
             decoration: InputDecoration(
                 icon: Icon(
                   Icons.alternate_email,
-                  color: Colors.deepPurple,
+                  color:  Color(0xff4863FF),
                 ),
                 hintText: 'mail@example.com',
                 labelText: 'Ingresa tu correo',
@@ -98,10 +98,10 @@ class RegisterPage extends StatelessWidget {
             decoration: InputDecoration(
                 icon: Icon(
                   Icons.lock_outline,
-                  color: Colors.deepPurple,
+                  color:  Color(0xff4863FF),
                 ),
                 labelText: 'Ingresa tu contraseña',
-                counterText: snapshot.data,
+                //counterText: snapshot.data,
                 errorText: snapshot.error),
             onChanged: bloc.changePassword,
           ),
@@ -123,7 +123,7 @@ class RegisterPage extends StatelessWidget {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(5.0)),
             elevation: 0.0,
-            color: Colors.deepPurple,
+            color:  Color(0xff4863FF),
             textColor: Colors.white,
           );
         });
@@ -142,12 +142,12 @@ class RegisterPage extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     final background = Container(
-      height: size.height * 0.4,
+      height: size.height,
       width: double.infinity,
       decoration: BoxDecoration(
           gradient: LinearGradient(colors: <Color>[
-        Color.fromRGBO(63, 63, 156, 1.0),
-        Color.fromRGBO(90, 70, 178, 1.0),
+         Color(0xff4863FF),
+         Color(0xff4863FF),
       ])),
     );
 

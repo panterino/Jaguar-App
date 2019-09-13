@@ -55,7 +55,7 @@ class LoginPage extends StatelessWidget {
             ),
           ),
           FlatButton(
-            child: Text('Registrarme'),
+            child: Text('Registrarme',style: TextStyle(color: Colors.white)),
             onPressed: () =>
                 Navigator.pushReplacementNamed(context, 'register'),
           ),
@@ -76,7 +76,7 @@ class LoginPage extends StatelessWidget {
             decoration: InputDecoration(
                 icon: Icon(
                   Icons.alternate_email,
-                  color: Colors.deepPurple,
+                  color:  Color(0xff4863FF),
                 ),
                 hintText: 'mail@example.com',
                 labelText: 'Ingresa tu correo',
@@ -100,10 +100,10 @@ class LoginPage extends StatelessWidget {
             decoration: InputDecoration(
                 icon: Icon(
                   Icons.lock_outline,
-                  color: Colors.deepPurple,
+                  color:  Color(0xff4863FF),
                 ),
                 labelText: 'Ingresa tu contraseña',
-                counterText: snapshot.data,
+                //counterText: snapshot.data,
                 errorText: snapshot.error),
             onChanged: bloc.changePassword,
           ),
@@ -125,7 +125,7 @@ class LoginPage extends StatelessWidget {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(5.0)),
             elevation: 0.0,
-            color: Colors.deepPurple,
+            color:  Color(0xff4863FF),
             textColor: Colors.white,
           );
         });
@@ -144,12 +144,12 @@ class LoginPage extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     final background = Container(
-      height: size.height * 0.4,
+      height: size.height,
       width: double.infinity,
       decoration: BoxDecoration(
           gradient: LinearGradient(colors: <Color>[
-        Color.fromRGBO(63, 63, 156, 1.0),
-        Color.fromRGBO(90, 70, 178, 1.0),
+        Color(0xff4863FF),
+        Color(0xff4863FF),
       ])),
     );
 
@@ -158,7 +158,7 @@ class LoginPage extends StatelessWidget {
       height: 100.0,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
-          color: Color.fromRGBO(255, 255, 255, .05)),
+          color:  Color(0xff4863FF)),
     );
 
     return Stack(
