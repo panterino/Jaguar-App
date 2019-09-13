@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:jaguar/src/bloc/provider.dart';
 import 'package:jaguar/src/providers/user_provider.dart';
+import 'package:jaguar/src/utils/utils.dart';
 
 class RegisterPage extends StatelessWidget {
-
   final usuarioProvider = UsuarioProvider();
   @override
   Widget build(BuildContext context) {
@@ -53,9 +53,9 @@ class RegisterPage extends StatelessWidget {
               ],
             ),
           ),
-          FlatButton(child: 
-          Text('Ya tengo cuenta'),
-          onPressed: ()=> Navigator.pushReplacementNamed(context, 'login'),
+          FlatButton(
+            child: Text('Ya tengo cuenta'),
+            onPressed: () => Navigator.pushReplacementNamed(context, 'login'),
           ),
           SizedBox(height: 100.0),
         ],
@@ -129,10 +129,13 @@ class RegisterPage extends StatelessWidget {
         });
   }
 
-  _register(LoginBloc bloc, BuildContext context ) {
-    usuarioProvider.newUser(bloc.email, bloc.password);
-
-    //Navigator.pushNamed(context, 'home');
+  _register(LoginBloc bloc, BuildContext context) async {
+    Map info = await usuarioProvider.newUser(bloc.email, bloc.password);
+    if (info['ok']) {
+      Navigator.pushNamed(context, 'home');
+    } else {
+      showAlert(context, info['message']);
+    }
   }
 
   Widget _createBckground(BuildContext context) {
