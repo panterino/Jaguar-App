@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:jaguar/src/bloc/provider.dart';
+import 'package:jaguar/src/providers/user_provider.dart';
 
 class LoginPage extends StatelessWidget {
+
+  final usuarioProvider = UsuarioProvider();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -127,10 +131,9 @@ class LoginPage extends StatelessWidget {
   }
 
   _login(LoginBloc bloc, BuildContext context ) {
-    print('Email: ${bloc.email}');
-    print('Password: ${bloc.password}');
+    usuarioProvider.login(bloc.email, bloc.password);
 
-    Navigator.pushNamed(context, 'home');
+    //Navigator.pushNamed(context, 'home');
   }
 
   Widget _createBckground(BuildContext context) {
