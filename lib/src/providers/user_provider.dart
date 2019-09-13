@@ -15,5 +15,12 @@ class UsuarioProvider {
         'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=$_firebaseToken',
         body: json.encode(authData));
     Map<String, dynamic> decodedResponse = json.decode(resp.body);
+    print(decodedResponse);
+
+    if (decodedResponse.containsKey('idToken')) {
+      return{'ok': true, 'token': decodedResponse['idToken']};
+    } else {
+      return{'ok': false, 'message': decodedResponse['error']['message']};
+    }
   }
 }

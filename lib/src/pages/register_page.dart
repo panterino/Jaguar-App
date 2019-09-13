@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:jaguar/src/bloc/provider.dart';
+import 'package:jaguar/src/providers/user_provider.dart';
 
-class LoginPage extends StatelessWidget {
+class RegisterPage extends StatelessWidget {
+
+  final usuarioProvider = UsuarioProvider();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +41,7 @@ class LoginPage extends StatelessWidget {
             child: Column(
               children: <Widget>[
                 Text(
-                  'Iniciar Sesión',
+                  'Crear nueva cuenta',
                   style: TextStyle(fontSize: 20.0),
                 ),
                 SizedBox(height: 30.0),
@@ -51,8 +54,8 @@ class LoginPage extends StatelessWidget {
             ),
           ),
           FlatButton(child: 
-          Text('Registrarme'),
-          onPressed: ()=> Navigator.pushReplacementNamed(context, 'register'),
+          Text('Ya tengo cuenta'),
+          onPressed: ()=> Navigator.pushReplacementNamed(context, 'login'),
           ),
           SizedBox(height: 100.0),
         ],
@@ -112,10 +115,10 @@ class LoginPage extends StatelessWidget {
         stream: bloc.formValidStream,
         builder: (context, snapshot) {
           return RaisedButton(
-            onPressed: snapshot.hasData ? () => _login(bloc, context) : null,
+            onPressed: snapshot.hasData ? () => _register(bloc, context) : null,
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
-              child: Text('Ingresar'),
+              child: Text('Registrarme'),
             ),
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(5.0)),
@@ -126,11 +129,10 @@ class LoginPage extends StatelessWidget {
         });
   }
 
-  _login(LoginBloc bloc, BuildContext context ) {
-    print('Email: ${bloc.email}');
-    print('Password: ${bloc.password}');
+  _register(LoginBloc bloc, BuildContext context ) {
+    usuarioProvider.newUser(bloc.email, bloc.password);
 
-    Navigator.pushNamed(context, 'home');
+    //Navigator.pushNamed(context, 'home');
   }
 
   Widget _createBckground(BuildContext context) {
@@ -179,7 +181,7 @@ class LoginPage extends StatelessWidget {
                 width: size.width,
               ),
               Text(
-                'Bienvenido',
+                'Únete',
                 style: TextStyle(color: Colors.white, fontSize: 25.0),
               )
             ],
